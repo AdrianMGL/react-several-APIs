@@ -1,8 +1,10 @@
+
 import axios from "axios";
 import "../App.css";
 import { useState, useEffect } from "react";
 
-const ApiEjercicio = () => {
+
+const ApiBoton = () => {
   const [results, setresults] = useState({});
 
   useEffect(() => {
@@ -12,6 +14,13 @@ const ApiEjercicio = () => {
   }, []);
   
   console.log(results);
+
+  const getUser = () =>{
+    axios
+      .get("https://randomuser.me/api/")
+      .then((res) => setresults(res.data.results[0]));
+
+  }
 
   return (
     <div className="App">
@@ -25,8 +34,10 @@ const ApiEjercicio = () => {
       <h3>{results.email}</h3>
       <h3>{results.phone}</h3>
       <h3>{results.location?.city}{', '} {results.location?.country}</h3>
+      <button onClick={getUser}>Cargar</button>
     </div>
   );
-};
+}; 
 
-export default ApiEjercicio;
+
+export default ApiBoton
