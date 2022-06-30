@@ -1,7 +1,8 @@
 import UseCounter from "../hooks/UseCounter";
 
 const CounterSpa = () => {
-  const { counter, increment, decrement } = UseCounter(5);
+
+  const { counter, increment, decrement } = UseCounter(10);
 
   return (
     <div>

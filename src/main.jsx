@@ -4,22 +4,23 @@ import Counter from "./Components/Counter";
 import CounterSpa from "./Components/CounterSpa";
 import Pokeapi from "./Components/Pokeapi";
 // import App from './App'
-// import Api from './Components/Api'
-// import ApiEjercicio from './Components/ApiEjercicio'
-// import ApiBoton from './Components/ApiBoton'
+import Breakingbad from "./Components/BreakingbadApi";
+import Randomuser from "./Components/RandomuserApi";
+import EmojisworldApi from "./Components/EmojisworldApi";
 // import CustomHooks from './Components/customHooks'
-import UseCounter from "./hooks/UseCounter";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* <App />
-    <Api/>
-    <ApiEjercicio/> */}
-    {/* <ApiBoton/> */}
-    {/* <Counter /> */}
-    {/* <CounterSpa/> */}
-
-    <Pokeapi/>
+    {/* { <App > } */}
+    <Breakingbad />
+    <hr />
+    <EmojisworldApi />
+    <hr />
+    <Randomuser />
+    {/* <Counter />
+    <CounterSpa/> */}
+    <hr />
+    <Pokeapi />
   </React.StrictMode>
 );

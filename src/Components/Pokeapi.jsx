@@ -1,17 +1,17 @@
 import axios from "axios";
 import "../Styles/Pokeapi.css";
 import { useState, useEffect } from "react";
+import useFetch from "../hooks/useFetch";
 
 function Pokeapi() {
-  const IndexPoke = "https://pokeapi.co/api/v2/pokemon/?limit=150";
-
+  const IndexPoke = "https://pokeapi.co/api/v2/pokemon/?limit=1";
   const randomPokeapi = Math.floor(Math.random() * IndexPoke.length); // 5
-  console.log(randomPokeapi);
+  //console.log(randomPokeapi);
 
-  // Paso 2: useState para recibir la respuesta
+  /*
   const [pokemon, setPokemon] = useState({});
 
-  //Paso 1: useEffect con la petición
+
   useEffect(() => {
     axios
       .get("https://pokeapi.co/api/v2/pokemon/25")
@@ -27,65 +27,73 @@ function Pokeapi() {
 
   // Paso 4: hacerle console.log
   console.log(pokemon);
+*/
+
+  const { data, getData } = useFetch(
+    `https://pokeapi.co/api/v2/pokemon/${randomPokeapi}`
+  );
+
+  console.log(data);
 
   return (
     <div className="card__container">
       <div className="card">
         <div className="header">
           <div className="name__type">
-            <h1 className="name">{pokemon.name}</h1>
-            <h3 className="type__name"> {pokemon.types?.[0].type.name}</h3>
+            <h1 className="name">{data.name}</h1>
+            <h3 className="type__name"> {data.types?.[0].type.name}</h3>
           </div>
-          <h3>{pokemon.id}</h3>
+          <h3>{data.id}</h3>
         </div>
         <div className="content">
-          <ul>
-            <li>
-              <h3>Abilities:</h3>
-              <h4>{pokemon.abilities?.[0].ability.name}</h4>
-            </li>
+          {
+            <ul>
+              <li>
+                <h3>Abilities:</h3>
+                <h4>{data.abilities?.[0].ability.name}</h4>
+              </li>
 
-            <li>
-              <h3>Height: </h3>
-              <h4>{pokemon.height}</h4>
-            </li>
-            <li>
-              <h3>Weight: </h3>
-              <h4>{pokemon.weight}</h4>
-            </li>
-            <li>
-              <h3>HP: </h3>
-              <h4>{pokemon.stats?.[0].base_stat}</h4>
-            </li>
-            <li>
-              <h3>Attack: </h3>
-              <h4>{pokemon.stats?.[1].base_stat}</h4>
-            </li>
-            <li>
-              <h3>Defense: </h3>
-              <h4>{pokemon.stats?.[2].base_stat}</h4>
-            </li>
-            <li>
-              <h3>Special Attack: </h3>
-              <h4>{pokemon.stats?.[3].base_stat}</h4>
-            </li>
-            <li>
-              <h3>Special Defense: </h3>
-              <h4>{pokemon.stats?.[4].base_stat}</h4>
-            </li>
-            <li>
-              <h3>Speed: </h3>
-              <h4>{pokemon.stats?.[5].base_stat}</h4>
-            </li>
-          </ul>
+              <li>
+                <h3>Height: </h3>
+                <h4>{data.height}</h4>
+              </li>
+              <li>
+                <h3>Weight: </h3>
+                <h4>{data.weight}</h4>
+              </li>
+              <li>
+                <h3>HP: </h3>
+                <h4>{data.stats?.[0].base_stat}</h4>
+              </li>
+              <li>
+                <h3>Attack: </h3>
+                <h4>{data.stats?.[1].base_stat}</h4>
+              </li>
+              <li>
+                <h3>Defense: </h3>
+                <h4>{data.stats?.[2].base_stat}</h4>
+              </li>
+              <li>
+                <h3>Special Attack: </h3>
+                <h4>{data.stats?.[3].base_stat}</h4>
+              </li>
+              <li>
+                <h3>Special Defense: </h3>
+                <h4>{data.stats?.[4].base_stat}</h4>
+              </li>
+              <li>
+                <h3>Speed: </h3>
+                <h4>{data.stats?.[5].base_stat}</h4>
+              </li>
+            </ul>
+          }
         </div>
         <div className="img__pokemon">
-          <img
-            src={pokemon.sprites?.other.dream_world.front_default}
-            alt={pokemon.name}
-          />
+          <img src={data.sprites?.other.home.front_default} alt={data.name} />
         </div>
-        <button onClick={getPoke}>Change</button>
+        <button className="btn" onClick={getData}>
+          Change
+        </button>
       </div>
     </div>
   );
