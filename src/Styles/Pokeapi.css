@@ -111,7 +111,7 @@ li {
 }
 
 .btn {
-  /* margin-block: 1rem 1rem; */
+  margin-bottom: .5rem;
   padding: 0.5rem 1rem;
   text-align: center;
   position: relative;
